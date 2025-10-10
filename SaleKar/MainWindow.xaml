@@ -1,0 +1,95 @@
+﻿<Window x:Class="SaleKar.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SaleKar"
+        xmlns:views="clr-namespace:SaleKar.Views"
+        xmlns:vm="clr-namespace:SaleKar.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <DockPanel>
+
+        <!-- 🔹 Status Bar (Bottom) -->
+        <StatusBar DockPanel.Dock="Bottom" Background="#2d2d30" Foreground="White" Padding="5,0">
+            <StatusBarItem Content="{Binding StatusMessage}" Width="300"/>
+            <StatusBarItem Content="{Binding CurrentUser}" Width="200"/>
+            <StatusBarItem Content="{Binding LicenseStatus}" Width="150"/>
+            <StatusBarItem HorizontalAlignment="Right">
+                <TextBlock Text="{Binding CurrentTime}" />
+            </StatusBarItem>
+        </StatusBar>
+
+        <!-- 🔹 Menu Bar (Top) -->
+        <Menu DockPanel.Dock="Top" FontSize="13" Padding="5,2" >
+            <MenuItem Header="_File" >
+                <MenuItem Header="_Home" Command="{Binding OpenHomeCommand}"  />
+                <MenuItem Header="_Settings" Command="{Binding OpenSettingsCommand}"  />
+                <Separator />
+                <MenuItem Header="E_xit" Command="{Binding ExitCommand}" InputGestureText="Alt+F4" />
+            </MenuItem>
+
+            <MenuItem Header="_View" >
+                <MenuItem Header="Refresh Current Tab" Command="{Binding RefreshCurrentTabCommand}" />
+            </MenuItem>
+
+            <MenuItem Header="_Help" >
+                <MenuItem Header="_About" Command="{Binding AboutCommand}" />
+            </MenuItem>
+        </Menu>
+
+        <!-- 🔹 Toolbar (Below Menu) -->
+        <ToolBarTray DockPanel.Dock="Top" Visibility="Collapsed" Background="#e6e6e6">
+            <ToolBar Background="#e6e6e6">
+                <Button ToolTip="Home" Command="{Binding OpenHomeCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="🏠" FontSize="16"/>
+                        <TextBlock Text=" Home" Margin="5,0,0,0"/>
+                    </StackPanel>
+                </Button>
+
+                <Button ToolTip="Settings" Command="{Binding OpenSettingsCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="⚙️" FontSize="16"/>
+                        <TextBlock Text=" Settings" Margin="5,0,0,0"/>
+                    </StackPanel>
+                </Button>
+
+                <Separator/>
+
+                <Button ToolTip="Refresh" Command="{Binding RefreshCurrentTabCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="🔄" FontSize="16"/>
+                        <TextBlock Text=" Refresh" Margin="5,0,0,0"/>
+                    </StackPanel>
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
+
+        <!-- 🔹 Main Tab Area -->
+        <TabControl ItemsSource="{Binding OpenTabs}" SelectedItem="{Binding SelectedTab}" Background="White">
+            <TabControl.Resources>
+                <DataTemplate DataType="{x:Type vm:HomeViewModel}">
+                    <views:HomeView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vm:SettingsViewModel}">
+                    <views:SettingsView />
+                </DataTemplate>
+            </TabControl.Resources>
+
+            <TabControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding DisplayTitle}" Margin="0,0,5,0"/>
+                        <Button Content="✖"
+                                Command="{Binding DataContext.CloseTabCommand, RelativeSource={RelativeSource AncestorType=TabControl}}"
+                                CommandParameter="{Binding}"
+                                Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                Width="18" Height="18" Padding="0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </TabControl.ItemTemplate>
+        </TabControl>
+
+    </DockPanel>
+</Window>
