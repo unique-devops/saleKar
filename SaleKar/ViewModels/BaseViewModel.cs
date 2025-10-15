@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SaleKar.ViewModel
+namespace SaleKar.ViewModels
 {
     public class BaseViewModel : ObservableObject
     {

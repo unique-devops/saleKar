@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 
-namespace SaleKar.ViewModel
+namespace SaleKar.ViewModels
 {
     public partial class MainViewModel : BaseViewModel
     {
@@ -40,6 +40,7 @@ namespace SaleKar.ViewModel
         }
 
         [RelayCommand] void OpenHome() => OpenTab<HomeViewModel>("Home");
+        [RelayCommand] void OpenItemMaster() => OpenTab<ItemViewModel>("ItemMasteer");
         [RelayCommand] void OpenSettings() => OpenTab<SettingsViewModel>("Settings");        
 
         [RelayCommand]

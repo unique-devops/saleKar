@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.Extensions.DependencyInjection;
-using SaleKar.ViewModel;
+using SaleKar.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

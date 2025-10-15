@@ -14,7 +14,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Helpers\" />
+    <Folder Include="Converters\" />
+    <Folder Include="Resources\" />
     <Folder Include="Theme\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SaleKar.Infrastructure\SaleKar.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

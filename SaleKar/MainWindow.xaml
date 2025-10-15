@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SaleKar"
         xmlns:views="clr-namespace:SaleKar.Views"
-        xmlns:vm="clr-namespace:SaleKar.ViewModel"
+        xmlns:vm="clr-namespace:SaleKar.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <DockPanel>
@@ -23,6 +23,7 @@
         <!-- 🔹 Menu Bar (Top) -->
         <Menu DockPanel.Dock="Top" FontSize="13" Padding="5,2" >
             <MenuItem Header="_File" >
+                <MenuItem Header="_Item" Command="{Binding OpenItemMasterCommand}"  />
                 <MenuItem Header="_Home" Command="{Binding OpenHomeCommand}"  />
                 <MenuItem Header="_Settings" Command="{Binding OpenSettingsCommand}"  />
                 <Separator />
@@ -71,6 +72,9 @@
             <TabControl.Resources>
                 <DataTemplate DataType="{x:Type vm:HomeViewModel}">
                     <views:HomeView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vm:ItemViewModel}">
+                    <views:ItemView />
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type vm:SettingsViewModel}">
                     <views:SettingsView />
