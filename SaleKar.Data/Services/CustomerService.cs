@@ -25,7 +25,7 @@ namespace SaleKar.Data.Services
             using IDbConnection conn = _connectionFactory.CreateConnection();
             // Example: call proc
             return await conn.QueryAsync<Customer>(
-                "GetAllCustomers", commandType: CommandType.StoredProcedure);
+                "GetAllTraders", commandType: CommandType.StoredProcedure);
         }
 
         public async Task<Customer?> GetByIdAsync(int id)

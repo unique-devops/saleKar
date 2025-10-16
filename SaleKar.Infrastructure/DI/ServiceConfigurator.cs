@@ -26,12 +26,18 @@ namespace SaleKar.Infrastructure.DI
                 {
                     client.BaseAddress = new Uri(AppConfigManager.ApiBaseUrl);
                 });
+                services.AddHttpClient<IItemService, ApiItemService>(client =>
+                {
+                    client.BaseAddress = new Uri(AppConfigManager.ApiBaseUrl);
+                });                
             }
             else // DB mode
             {
                 services.AddSingleton<IDbConnectionFactory, DbConnectionFactory>();
                 services.AddScoped<ICustomerService, CustomerService>();
             }
+            
+            
         }
     }
 }

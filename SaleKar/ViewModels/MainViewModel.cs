@@ -22,6 +22,12 @@ namespace SaleKar.ViewModels
         [ObservableProperty]
         private BaseViewModel? selectedTab;
 
+        public bool IsActionPanelVisible { get; set; } = true;
+        public bool IsDetailPanelVisible { get; set; } = true;
+
+        public object? CurrentActionView { get; set; }
+        public object? CurrentDetailView { get; set; }
+
 
         [ObservableProperty] private string statusMessage = "Ready";
         [ObservableProperty] private string currentUser = "User: Admin";

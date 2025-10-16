@@ -19,9 +19,9 @@ namespace SaleKar.Infrastructure.Configuration
             //    .Build();
 
         }
-        public static string DataMode;
+        public static string DataMode ="API";
         public static string DatabaseProvider;
-        public static string ApiBaseUrl;
+        public static string ApiBaseUrl = "http://localhost:5161/";
         public static string GetConnectionString(string name) =>
             Configuration.GetConnectionString(name)!;
         //public static string DataMode => Configuration["DataMode"]!;
